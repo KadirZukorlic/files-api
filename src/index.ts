@@ -16,13 +16,13 @@ const fetchDataAndCache = async () => {
     const response = await axios.get(externalApiUrl);
     const transformedData = transformData(response.data.items);
     cache.set(CACHE_KEY, transformedData);
-    console.log('Data fetched and cached');
   } catch (error) {
     console.error('Error fetching data:', error);
   }
 };
 
 const initializeServer = async () => {
+  console.log('Server is starting, please wait a moment...');
   await fetchDataAndCache();
 
   app.get('/api/files', (req: Request, res: Response) => {
