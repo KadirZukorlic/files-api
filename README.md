@@ -3,7 +3,7 @@
 1. Clone the project
 2. Run `npm install`
 3. Run `npm start`
-4. Send a GET request to `localhost:3000/api/files`
+4. When server starts send a GET request to `localhost:3000/api/files` in postman or whatever you like to use
 
 ## Approach
 
