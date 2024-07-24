@@ -1,14 +1,13 @@
-export interface FileStructure {
+interface FileStructure {
   [ip: string]: any[];
 }
 
-export const cleanFileStructure = (structure: FileStructure): FileStructure => {
+const cleanFileStructure = (structure: FileStructure): FileStructure => {
   for (const key in structure) {
     if (Array.isArray(structure[key])) {
-      // Remove empty strings
       structure[key] = structure[key].filter((item) => item !== '');
 
-      // Recursively clean nested objects
+      // Clean nested objects
       structure[key] = structure[key]
         .map((item) =>
           typeof item === 'object'
@@ -21,7 +20,6 @@ export const cleanFileStructure = (structure: FileStructure): FileStructure => {
             : true
         );
 
-      // Remove empty arrays
       if (structure[key].length === 0) {
         delete structure[key];
       }
