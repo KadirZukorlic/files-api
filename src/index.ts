@@ -3,7 +3,7 @@ import axios from 'axios';
 import { transformData } from '../src/util/index';
 import NodeCache from 'node-cache';
 
-const port: number = 3001;
+const port: number = 3000;
 const app = express();
 
 const externalApiUrl = 'https://rest-test-eight.vercel.app/api/test';
