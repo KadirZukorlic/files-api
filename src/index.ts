@@ -3,7 +3,7 @@ import axios from 'axios';
 import { transformData } from '../src/util/index';
 import NodeCache from 'node-cache';
 
-const port: number = 3000;
+const port: number = 3001;
 const app = express();
 
 const externalApiUrl = 'https://rest-test-eight.vercel.app/api/test';
@@ -21,8 +21,16 @@ const fetchDataAndCache = async () => {
   }
 };
 
+let counter = 10;
+
 const initializeServer = async () => {
   console.log('Server is starting, please wait a moment...');
+  setInterval(() => {
+    counter -= 1;
+    if (counter >= 0) {
+      console.log('Accessing required data in', counter, 'seconds');
+    }
+  }, 1000);
   await fetchDataAndCache();
 
   app.get('/api/files', (req: Request, res: Response) => {
